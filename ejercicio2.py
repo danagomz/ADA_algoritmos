@@ -1,20 +1,27 @@
+import math
+import os
+import random
+import re
+import sys
+
 def camelcase(s):
-    # Si por alguna razón la cadena está vacía, devolvemos 0
+    # Si la cadena está vacía, no hay palabras [cite: 1]
     if len(s) == 0:
         return 0
 
-    # Como la primera palabra empieza en minúscula, inicializamos el contador en 1
+    # Inicializamos en 1 porque la primera palabra empieza en minúscula [cite: 1]
     contador_palabras = 1
 
-    # Recorremos cada letra de la cadena de texto
+    # Recorremos cada letra buscando mayúsculas [cite: 1]
     for letra in s:
-        # .isupper()-->función de Python que nos dice si una letra es MAYÚSCULA (True) o no (False)
+        # Si la letra es mayúscula, significa que inicia una nueva palabra [cite: 2]
         if letra.isupper():
-            # Si es mayúscula, encontramos el inicio de una nueva palabra
-            contador_palabras = contador_palabras + 1
+            contador_palabras += 1
 
-    # Al terminar el ciclo, devolvemos el total de palabras encontradas
     return contador_palabras
 
-print(camelcase("saveChangesInTheEditor"))  # Salida esperada: 5
-print(camelcase("unoDosTres"))             # Salida esperada: 3
+if __name__ == '__main__':
+
+    s = input("Ingresa la palabra en camelCase: ")
+    result = camelcase(s)
+    print(f"Número de palabras: {result}")
